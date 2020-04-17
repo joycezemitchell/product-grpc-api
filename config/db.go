@@ -1,28 +1,35 @@
 package config
 
-import (
-	"context"
-	"fmt"
-	"log"
+import "fmt"
 
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
-)
+// import (
+// 	"context"
+// 	"fmt"
+// 	"log"
 
-var collection *mongo.Collection
+// 	"go.mongodb.org/mongo-driver/mongo"
+// 	"go.mongodb.org/mongo-driver/mongo/options"
+// )
 
-func init() {
+// var collection *mongo.Collection
 
-	// connect to MongoDB
-	fmt.Println("Connecting to MongoDB")
-	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27017"))
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = client.Connect(context.TODO())
-	if err != nil {
-		log.Fatal(err)
-	}
+// func init() {
 
-	collection = client.Database("allyshop").Collection("products")
+// 	// connect to MongoDB
+// 	fmt.Println("Connecting to MongoDB")
+// 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27017"))
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	err = client.Connect(context.TODO())
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+
+// 	collection = client.Database("allyshop").Collection("products")
+// }
+
+// TestPrint implements
+func TestPrint() {
+	fmt.Println("TestPrint")
 }
