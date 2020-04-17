@@ -6,7 +6,8 @@ import (
 	productpb "github.com/joycezemitchell/product-grpc-api/proto"
 )
 
-type server struct {
+// Server - gRPC product server
+type Server struct {
 }
 
 func (*server) CreateProduct(ctx context.Context, req *productpb.CreateProductRequest) (*productpb.CreateProductResponse, error) {

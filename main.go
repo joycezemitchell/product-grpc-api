@@ -8,6 +8,7 @@ import (
 	"os/signal"
 
 	productpb "github.com/joycezemitchell/product-grpc-api/proto"
+	productservices "github.com/joycezemitchell/product-grpc-api/services"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
@@ -17,20 +18,6 @@ func main() {
 	// if we crash the go code, we get the file name and line number
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
-	// connect to MongoDB
-	// fmt.Println("Connecting to MongoDB")
-	// client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27017"))
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// err = client.Connect(context.TODO())
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// fmt.Println("Product Service Started")
-	// collection = client.Database("allyshop").Collection("products")
-
 	lis, err := net.Listen("tcp", "0.0.0.0:50051")
 	if err != nil {
 		log.Fatalf("Failed to listen: %v", err)
@@ -38,7 +25,7 @@ func main() {
 
 	opts := []grpc.ServerOption{}
 	s := grpc.NewServer(opts...)
-	productpb.RegisterProductServiceServer(s, &server{})
+	productpb.RegisterProductServiceServer(s, &productservices.Server{})
 
 	// Register reflection service on gRPC server.
 	reflection.Register(s)
