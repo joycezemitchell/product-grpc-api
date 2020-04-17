@@ -10,22 +10,27 @@ import (
 type Server struct {
 }
 
-func (*server) CreateProduct(ctx context.Context, req *productpb.CreateProductRequest) (*productpb.CreateProductResponse, error) {
+// CreateProduct Method
+func (*Server) CreateProduct(ctx context.Context, req *productpb.CreateProductRequest) (*productpb.CreateProductResponse, error) {
 	return nil, nil
 }
 
-func (*server) UpdateProduct(ctx context.Context, req *productpb.UpdateProductRequest) (*productpb.UpdateProductResponse, error) {
+// UpdateProduct Method
+func (*Server) UpdateProduct(ctx context.Context, req *productpb.UpdateProductRequest) (*productpb.UpdateProductResponse, error) {
 	return nil, nil
 }
 
-func (*server) DeleteProduct(ctx context.Context, req *productpb.DeleteProductRequest) (*productpb.DeleteProductResponse, error) {
+// DeleteProduct Method
+func (*Server) DeleteProduct(ctx context.Context, req *productpb.DeleteProductRequest) (*productpb.DeleteProductResponse, error) {
 	return nil, nil
 }
 
-func (*server) ReadProduct(ctx context.Context, req *productpb.ReadProductRequest) (*productpb.ReadProductResponse, error) {
+// ReadProduct Method
+func (*Server) ReadProduct(ctx context.Context, req *productpb.ReadProductRequest) (*productpb.ReadProductResponse, error) {
 	return nil, nil
 }
 
-func (*server) ListProduct(req *productpb.ListProductRequest, stream productpb.ProductService_ListProductServer) error {
+// ListProduct Method
+func (*Server) ListProduct(req *productpb.ListProductRequest, stream productpb.ProductService_ListProductServer) error {
 
 }
