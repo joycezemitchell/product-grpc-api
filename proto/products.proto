@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "productpb";
+
+message Product {
+    string id = 1;
+    string title = 2;
+    string seo = 3;
+    string url = 4;
+    string vendor = 5;
+    string tags = 6;
+
+    message Variant  {
+        string id = 1;
+        string title = 2;
+        repeated ProductOption product_option = 3;
+        repeated Media media = 4;
+        Inventory inventory = 5;
+        Shipping shipping = 6;
+        string price = 7;
+        string sales_price = 8;
+        string sku = 9;
+        string taxable = 10;
+        string positon = 11;
+        string created_at = 12;
+        string updated_at = 13;
+    };
+
+    message ProductOption {
+        string id = 1;   
+        string name = 2;  
+        string type = 3;  
+        string value = 4;       
+    }
+
+    message Media {
+        string id = 1; 
+        string src = 2;
+    }
+    
+    message Inventory {
+        string quantity = 1;
+        string continue_selling = 2;
+    }
+    
+    message Shipping{
+        string  weight = 1;
+        string  weight_unit = 2;
+    }
+
+    message Category{
+        string  id = 1;
+        string  name = 2;
+    }
+
+    repeated Variant variant = 7;
+    repeated Category category = 8;
+    string created_at = 9;
+    string updated_at = 10;
+
+}
+
+message CreateProductRequest {
+    Product product = 1;
+}
+
+message CreateProductResponse {
+    Product product = 1;
+}
+
+message UpdateProductRequest {
+    Product product = 1;
+}
+
+message UpdateProductResponse {
+    Product product = 1;
+}
+
+message ReadProductRequest {
+    string product_id = 1;
+}
+
+message ReadProductResponse {
+    Product product = 1;
+}
+
+message DeleteProductRequest {
+    string product_id = 1;
+}
+
+message DeleteProductResponse {
+    string product_id = 1;
+}
+
+message ListProductRequest {
+
+}
+
+message ListProductResponse {
+    Product product = 1;
+}
+
+service ProductService {
+    rpc CreateProduct (CreateProductRequest) returns (CreateProductResponse);
+    rpc UpdateProduct (UpdateProductRequest) returns (UpdateProductResponse);
+    rpc DeleteProduct (DeleteProductRequest) returns (DeleteProductResponse); // return NOT_FOUND if product not found
+    rpc ReadProduct (ReadProductRequest) returns (ReadProductResponse); // return NOT_FOUND if product not found
+    rpc ListProduct (ListProductRequest) returns (stream ListProductResponse); 
+}

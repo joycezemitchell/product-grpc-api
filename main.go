@@ -1,7 +1,12 @@
 package main
 
-import config "github.com/joycezemitchell/product-grpc-api/config"
+import (
+	"context"
+
+	config "github.com/joycezemitchell/product-grpc-api/config"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 func main() {
-	config.TestPrint()
+	config.Collection.Find(context.Background(), primitive.D{{}})
 }
